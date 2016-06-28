@@ -186,15 +186,19 @@
 		140F19531A49D79400B0016A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0720;
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "kishikawa katsumi";
 				TargetAttributes = {
 					140F195B1A49D79400B0016A = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 27AEDK3C9F;
+						DevelopmentTeamName = "Katsumi Kishikawa";
+						ProvisioningStyle = Manual;
 					};
 					140F19661A49D79500B0016A = {
 						CreatedOnToolsVersion = 6.1.1;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -204,6 +208,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 140F19521A49D79400B0016A;
 			productRefGroup = 140F195D1A49D79400B0016A /* Products */;
@@ -282,6 +287,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 148E44EB1BF9EEB3004FFEC1 /* KeychainAccess.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				PROVISIONING_PROFILE_SPECIFIER = 27AEDK3C9F/;
 			};
 			name = Debug;
 		};
@@ -289,6 +296,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 148E44EB1BF9EEB3004FFEC1 /* KeychainAccess.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				PROVISIONING_PROFILE_SPECIFIER = 27AEDK3C9F/;
 			};
 			name = Release;
 		};
@@ -296,6 +305,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 148E44E91BF9EDE4004FFEC1 /* Tests.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				PROVISIONING_PROFILE_SPECIFIER = 27AEDK3C9F/;
 			};
 			name = Debug;
 		};
@@ -303,6 +314,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 148E44E91BF9EDE4004FFEC1 /* Tests.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				PROVISIONING_PROFILE_SPECIFIER = 27AEDK3C9F/;
 			};
 			name = Release;
 		};

@@ -422,7 +422,7 @@ class KeychainAccessTests: XCTestCase {
 
         let length = 256
         let data = NSMutableData(length: length)!
-        SecRandomCopyBytes(kSecRandomDefault, length, UnsafeMutablePointer<UInt8>(data.mutableBytes))
+        let _ = SecRandomCopyBytes(kSecRandomDefault, length, UnsafeMutablePointer<UInt8>(data.mutableBytes))
 
         do {
             try keychain.set(data, key: "RandomData")
@@ -492,7 +492,7 @@ class KeychainAccessTests: XCTestCase {
                 XCTAssertNotNil(attributes?.persistentRef)
                 XCTAssertEqual(attributes?.accessible, Accessibility.WhenPasscodeSetThisDeviceOnly.rawValue)
                 XCTAssertNotNil(attributes?.accessControl)
-                XCTAssertEqual(attributes?.accessGroup, "")
+                XCTAssertEqual(attributes?.accessGroup, "com.apple.token")
                 XCTAssertNotNil(attributes?.synchronizable)
                 XCTAssertNotNil(attributes?.creationDate)
                 XCTAssertNotNil(attributes?.modificationDate)
@@ -558,7 +558,7 @@ class KeychainAccessTests: XCTestCase {
                 } else {
                     XCTAssertNotNil(attributes?.accessControl)
                 }
-                XCTAssertEqual(attributes?.accessGroup, "")
+                XCTAssertEqual(attributes?.accessGroup, "com.apple.token")
                 XCTAssertNotNil(attributes?.synchronizable)
                 XCTAssertNotNil(attributes?.creationDate)
                 XCTAssertNotNil(attributes?.modificationDate)
@@ -600,7 +600,7 @@ class KeychainAccessTests: XCTestCase {
                 } else {
                     XCTAssertNotNil(attributes?.accessControl)
                 }
-                XCTAssertEqual(attributes?.accessGroup, "")
+                XCTAssertEqual(attributes?.accessGroup, "com.apple.token")
                 XCTAssertNotNil(attributes?.synchronizable)
                 XCTAssertNotNil(attributes?.creationDate)
                 XCTAssertNotNil(attributes?.modificationDate)
@@ -643,7 +643,7 @@ class KeychainAccessTests: XCTestCase {
                 } else {
                     XCTAssertNotNil(attributes?.accessControl)
                 }
-                XCTAssertEqual(attributes?.accessGroup, "")
+                XCTAssertEqual(attributes?.accessGroup, "com.apple.token")
                 XCTAssertNotNil(attributes?.synchronizable)
                 XCTAssertNotNil(attributes?.creationDate)
                 XCTAssertNotNil(attributes?.modificationDate)
@@ -1034,7 +1034,7 @@ class KeychainAccessTests: XCTestCase {
                 return value1.compare(value2) == NSComparisonResult.OrderedAscending || value1.compare(value2) == NSComparisonResult.OrderedSame
             }
 
-            XCTAssertEqual(sortedItems[0]["accessGroup"] as? String, "")
+            XCTAssertEqual(sortedItems[0]["accessGroup"] as? String, "com.apple.token")
             XCTAssertEqual(sortedItems[0]["synchronizable"] as? String, "false")
             XCTAssertEqual(sortedItems[0]["service"] as? String, "")
             XCTAssertEqual(sortedItems[0]["value"] as? String, "value1")
@@ -1042,7 +1042,7 @@ class KeychainAccessTests: XCTestCase {
             XCTAssertEqual(sortedItems[0]["class"] as? String, "GenericPassword")
             XCTAssertEqual(sortedItems[0]["accessibility"] as? String, "AfterFirstUnlock")
 
-            XCTAssertEqual(sortedItems[1]["accessGroup"] as? String, "")
+            XCTAssertEqual(sortedItems[1]["accessGroup"] as? String, "com.apple.token")
             XCTAssertEqual(sortedItems[1]["synchronizable"] as? String, "false")
             XCTAssertEqual(sortedItems[1]["service"] as? String, "")
             XCTAssertEqual(sortedItems[1]["value"] as? String, "value2")
@@ -1050,7 +1050,7 @@ class KeychainAccessTests: XCTestCase {
             XCTAssertEqual(sortedItems[1]["class"] as? String, "GenericPassword")
             XCTAssertEqual(sortedItems[1]["accessibility"] as? String, "AfterFirstUnlock")
 
-            XCTAssertEqual(sortedItems[2]["accessGroup"] as? String, "")
+            XCTAssertEqual(sortedItems[2]["accessGroup"] as? String, "com.apple.token")
             XCTAssertEqual(sortedItems[2]["synchronizable"] as? String, "false")
             XCTAssertEqual(sortedItems[2]["service"] as? String, "")
             XCTAssertEqual(sortedItems[2]["value"] as? String, "value3")
@@ -1083,7 +1083,7 @@ class KeychainAccessTests: XCTestCase {
                 return value1.compare(value2) == NSComparisonResult.OrderedAscending || value1.compare(value2) == NSComparisonResult.OrderedSame
             }
 
-            XCTAssertEqual(sortedItems[0]["accessGroup"] as? String, "")
+            XCTAssertEqual(sortedItems[0]["accessGroup"] as? String, "com.apple.token")
             XCTAssertEqual(sortedItems[0]["synchronizable"] as? String, "true")
             XCTAssertEqual(sortedItems[0]["service"] as? String, "service1")
             XCTAssertEqual(sortedItems[0]["value"] as? String, "service1_value1")
@@ -1091,7 +1091,7 @@ class KeychainAccessTests: XCTestCase {
             XCTAssertEqual(sortedItems[0]["class"] as? String, "GenericPassword")
             XCTAssertEqual(sortedItems[0]["accessibility"] as? String, "WhenUnlockedThisDeviceOnly")
 
-            XCTAssertEqual(sortedItems[1]["accessGroup"] as? String, "")
+            XCTAssertEqual(sortedItems[1]["accessGroup"] as? String, "com.apple.token")
             XCTAssertEqual(sortedItems[1]["synchronizable"] as? String, "false")
             XCTAssertEqual(sortedItems[1]["service"] as? String, "service1")
             XCTAssertEqual(sortedItems[1]["value"] as? String, "service1_value2")

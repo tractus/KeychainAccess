@@ -220,9 +220,9 @@ public struct AuthenticationPolicy : OptionSetType {
     @available(watchOS, unavailable)
     public static let ApplicationPassword = AuthenticationPolicy(rawValue: 1 << 31)
 
-    public let rawValue : Int
+    public let rawValue: UInt
 
-    public init(rawValue:Int) {
+    public init(rawValue: UInt) {
         self.rawValue = rawValue
     }
 }
