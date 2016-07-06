@@ -1,8 +1,19 @@
 require 'xcjobs'
-
+  
 def destinations(platform: 'iphonesimulator')
   if platform == 'iphonesimulator'
-    [ 'name=iPhone SE,OS=10.0'
+    [ 'name=iPhone 5,OS=10.0',
+      'name=iPhone 5s,OS=10.0',
+      'name=iPhone 6,OS=10.0',
+      'name=iPhone 6 Plus,OS=10.0',
+      'name=iPhone 6s,OS=10.0',
+      'name=iPhone 6s Plus,OS=10.0',
+      'name=iPhone SE,OS=10.0',
+      'name=iPad Air,OS=10.0',
+      'name=iPad Air 2,OS=10.0',
+      'name=iPad Pro (9.7 inch),OS=10.0',
+      'name=iPad Pro (12.9 inch),OS=10.0',
+      'name=iPad Retina,OS=10.0'
     ]
   elsif platform == 'watchsimulator'
     [ 'name=Apple Watch - 38mm,OS=3.0',
@@ -21,7 +32,7 @@ def supportedPlatforms
 end
 
 def configurations
-  ['Release']
+  ['Debug', 'Release']
 end
 
 desc "build for all platforms"
@@ -75,6 +86,14 @@ namespace :test do
       t.sdk = platform
       destinations(platform: platform).each do |destination|
         t.add_destination(destination)
+      end
+      
+      t.before_action do |out, status|
+        system %[killall 'Simulator']
+        destinations(platform: platform).map do |destination|
+          m = destination.match(%r[name=(.*),OS=([0-9.]+)])
+          %[xcrun instruments -t 'Blank' -l 1 -w "#{m[1]} (#{m[2]})"]
+        end.each { |script| system script }
       end
       t.configuration = configuration
       t.coverage = true
