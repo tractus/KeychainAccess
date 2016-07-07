@@ -688,7 +688,7 @@ public class Keychain {
     
     public func removeAll() throws {
         var query = options.query()
-        #if !os(iOS) && !os(watchOS) && !os(tvOS)
+        #if os(OSX)
         query[MatchLimit] = MatchLimitAll
         #endif
         
